@@ -1,0 +1,15 @@
+body {
+    margin-top: 10px;
+    background: #A9A9A9;
+}
+
+a {
+  color: #00B7FF;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  color: #333;
+  background-color: #333;
+}

@@ -1,0 +1,17 @@
+{
+  "name": "dessertapp",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "consolidate": "^0.14.5",
+    "debug": "~2.6.3",
+    "dustjs-helpers": "^2.5.6",
+    "express": "~4.15.2",
+    "path": "^0.12.7",
+    "pg": "^6.1.5"
+  }
+}

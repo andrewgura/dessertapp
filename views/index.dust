@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Home</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="/javascripts/main.js"></script>
+    <script src="/javascripts/bootstrap.js"></script>
+</head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-2 col-md-7">
+          <!--Add Entry button to database  -->
+          <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#formModal">Add Dessert</button><br>
+            <!--Entry from database  -->
+            {#tic}
+            <div class="well">
+              <h4>
+                <!--Name from database  -->
+                <p id="nameid"><strong><center>{name}</center></strong></p>
+                <hr>
+                <!--Picture from database  -->
+                <img src="{picture}" height="158px" width="200px">
+                <!-- Makes button collpaseable -->
+                <button class="btn btn-default pull-right" data-toggle="collapse" href="#tic_{id}" aria-expanded="false" aria-controls="tic_{id}">
+                <!-- Button Icon Image -->
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button></h4>
+              <!--Inside the collapse  -->
+                <div class="collapse" id="tic_{id}">
+                <hr><br>
+                <!--Description from database  -->
+                <p><strong>Description: </strong>{description}</p>
+                <br><hr>
+                <!-- Edit and Remove Buttons -->
+                <button class="btn btn-warning edit-tic"
+                data-toggle="modal"
+                data-target="#editFormModal"
+                data-id="{id}"
+                data-name="{name}"
+                data-description="{description}"
+                data-picture="{picture}">
+                <!-- Edit button image -->
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
+                <!-- Delete button image -->
+                <button class="btn btn-danger delete-tic" data-id="{id}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+              </div>
+            </div>
+            {/tic}
+        </div>
+      </div>
+    </div>
+
+    <!-- Add new Dessert Modal -->
+        <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <form method="post" action="/add">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Add Dessert</h4>
+                </div>
+                <div class="modal-body">
+                  <!--Set Name -->
+                  <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" name="name"/>
+                  </div>
+                  <!--Set Description -->
+                  <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control" name="description"></textarea>
+                  </div>
+                  <!--Set Picture URL -->
+                  <div class="form-group">
+                    <label>Picture</label>
+                      <textarea class="form-control" name="picture"></textarea>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                  <input type="submit" class="btn btn-primary"></button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Edit Dessert Modal -->
+            <div class="modal fade" id="editFormModal" tabindex="-1" role="dialog" aria-labelledby="editFormModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <form method="post" action="/edit">
+                    <input type="hidden" id="edit-form-id" name="id"/>
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Edit Dessert</h4>
+                    </div>
+                    <div class="modal-body">
+                      <div class="form-group">
+                        <label>Dessert Name</label>
+                        <input type="text" class="form-control"
+                        name="name" id="edit-form-name"/>
+                      </div>
+                      <div class="form-group">
+                        <label>Description</label>
+                        <textarea class="form-control"
+                        name="description" id="edit-form-description"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label>Picture</label>
+                          <textarea class="form-control"
+                          name="picture" id="edit-form-picture"></textarea>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                      <input type="submit" class="btn btn-primary"></button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+  </body>
+
+</html>
